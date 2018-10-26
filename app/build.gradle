@@ -35,3 +35,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:16.0.1'
     implementation 'com.google.firebase:firebase-ads:15.0.1'
 }
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        def appName = "GroupMe"
+        outputFileName = appName+"-${variant.versionName}.apk"
+    }
+}
