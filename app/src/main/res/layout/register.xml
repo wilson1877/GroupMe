@@ -23,11 +23,29 @@
             app:srcCompat="@drawable/logo" />
 
         <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/editTextContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="Contact Number"
+            android:inputType="phone"
+            android:gravity="center" />
+
+        <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:hint="Enter email"
+            android:hint="Email Address"
             android:inputType="textEmailAddress"
             android:gravity="center" />
 
@@ -36,9 +54,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:hint="Enter password"
+            android:hint="Password"
             android:inputType="textPassword"
             android:gravity="center" />
+
+        <RadioGroup
+            android:id="@+id/userType"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center" >
+            <RadioButton
+                android:id="@+id/isLecturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lecturer"
+                android:layout_marginRight="10dp" />
+            <RadioButton
+                android:id="@+id/isStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student"
+                android:layout_marginLeft="10dp" />
+        </RadioGroup>
 
         <Button
             android:id="@+id/buttonSignup"
@@ -53,7 +91,8 @@
             android:textAlignment="center"
             android:layout_margin="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp" />
 
     </LinearLayout>
 
