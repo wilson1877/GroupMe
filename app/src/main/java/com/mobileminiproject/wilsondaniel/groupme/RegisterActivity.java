@@ -42,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
-        //getting the reference of artists node
+        //getting the reference of users node
         databaseUser = FirebaseDatabase.getInstance().getReference("users");
 
         //getting views
@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
         textViewSignin = (TextView) findViewById(R.id.textViewSignin);
 
-        //list to store artists
+        //list to store users
         users = new ArrayList<>();
 
         //adding an onclicklistener to button
@@ -65,7 +65,12 @@ public class RegisterActivity extends AppCompatActivity {
                 if(view == buttonSignup){
                     addUser();
                 }
+            }
+        });
 
+        textViewSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 if(view == textViewSignin){
                     finish();
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
@@ -84,16 +89,17 @@ public class RegisterActivity extends AppCompatActivity {
         boolean userType = isStudent.isChecked();
 
         //checking if the value is provided
-        if (!TextUtils.isEmpty(name)) {
+        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(contactNo) && !TextUtils.isEmpty(emailAddress) &&
+                !TextUtils.isEmpty(password)) {
 
                 //getting a unique id using push().getKey() method
-                //it will create a unique id and we will use it as the Primary Key for our Artist
+                //it will create a unique id and we will use it as the Primary Key for our User
                 String userID = databaseUser.push().getKey();
 
-                //creating an Artist Object
+                //creating an User Object
                 User users = new User(userID, name, contactNO, emailAddress, password, userType);
 
-                //Saving the Artist
+                //Saving the User
                 databaseUser.child(userID).setValue(users);
 
                 //setting edittext to blank again

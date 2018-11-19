@@ -1,8 +1,6 @@
 package com.mobileminiproject.wilsondaniel.groupme;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,106 +10,120 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
+import java.util.List;
 
+public class LoginActivity extends AppCompatActivity {
 
-    //defining views
-    private Button buttonSignIn;
-    private EditText editTextEmail;
-    private EditText editTextPassword;
-    private TextView textViewSignup;
+    EditText editTextEmail, editTextPassword;
+    Button buttonSignin;
+    TextView textViewSignUp;
+    List<User> userList;
 
-    //firebase auth object
-    private FirebaseAuth firebaseAuth;
-
-    //progress dialog
-    private ProgressDialog progressDialog;
-
+    //our database reference object
+    DatabaseReference databaseUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        //getting firebase auth object
-        firebaseAuth = FirebaseAuth.getInstance();
+        //getting the reference of users node
+        databaseUsers = FirebaseDatabase.getInstance().getReference("users");
 
-        //if the objects getcurrentuser method is not null
-        //means user is already logged in
-        if(firebaseAuth.getCurrentUser() != null){
-            //close this activity
-            finish();
-            //opening profile activity
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-        }
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        buttonSignin = findViewById(R.id.buttonSignin);
+        textViewSignUp = findViewById(R.id.textViewSignUp);
 
-        //initializing views
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        buttonSignIn = (Button) findViewById(R.id.buttonSignin);
-        textViewSignup  = (TextView) findViewById(R.id.textViewSignUp);
+        //list to store users
+        userList = new ArrayList<>();
 
-        progressDialog = new ProgressDialog(this);
+        //adding an onclicklistener to button
+        buttonSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(view == buttonSignin){
+                    validateLogin();
+                }
+            }
+        });
 
-        //attaching click listener
-        buttonSignIn.setOnClickListener(this);
-        textViewSignup.setOnClickListener(this);
-    }
-
-    //method for user login
-    private void userLogin(){
-        String email = editTextEmail.getText().toString().trim();
-        String password  = editTextPassword.getText().toString().trim();
-
-
-        //checking if email and passwords are empty
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        //if the email and password are not empty
-        //displaying a progress dialog
-
-        progressDialog.setMessage("Login In Please Wait...");
-        progressDialog.show();
-
-        //logging in the user
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-                        //if the task is successfull
-                        if(task.isSuccessful()){
-                            //start the profile activity
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                        }
-                    }
-                });
-
+        textViewSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(view == textViewSignUp){
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                }
+            }
+        });
     }
 
     @Override
-    public void onClick(View view) {
-        if(view == buttonSignIn){
-            userLogin();
-        }
+    protected void onStart() {
+        super.onStart();
+        //attaching value event listener
+        databaseUsers.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        if(view == textViewSignup){
+                //clearing the previous user list
+                userList.clear();
+
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting users
+                    User user = postSnapshot.getValue(User.class);
+                    //adding artist to the list
+                    userList.add(user);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void validateLogin() {
+
+        //getting the login input values
+        String emailIn = editTextEmail.getText().toString().trim();
+        String passwordIn = editTextPassword.getText().toString().trim();
+        Boolean isFound = false;
+
+        for (int x=0; x<userList.size(); x++) {
+            String email = userList.get(x).getEmailAddress();
+            String password = userList.get(x).getPassword();
+
+//            System.out.println(email);
+//            System.out.println(password);
+
+            if (emailIn.isEmpty()) {
+                Toast.makeText(this, "Please enter your email address!", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            if (passwordIn.isEmpty()) {
+                Toast.makeText(this, "Please enter your password!", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            if (emailIn.equals(email) && passwordIn.equals(password)) {
+                isFound = true;
+                break;
+            }
+        }
+        if (isFound == true) {
+            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
             finish();
-            startActivity(new Intent(this, RegisterActivity.class));
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
         }
     }
 }
