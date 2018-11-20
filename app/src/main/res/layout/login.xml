@@ -55,6 +55,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3427245011593880/1135232593" >
+        </com.google.android.gms.ads.AdView>
+
     </LinearLayout>
 
 </RelativeLayout>
+
+    <!--app:adUnitId="ca-app-pub-3940256099942544/6300978111"-->

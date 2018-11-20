@@ -3,13 +3,13 @@ package com.mobileminiproject.wilsondaniel.groupme;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,12 +19,17 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText editTextEmail, editTextPassword;
     Button buttonSignin;
     TextView textViewSignUp;
     List<User> userList;
+
+    private AdView mAdView;
 
     //our database reference object
     DatabaseReference databaseUsers;
@@ -33,6 +38,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        // test app id
+//        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        // real app id
+        MobileAds.initialize(this, "ca-app-pub-3427245011593880~9041642776");
 
         //getting the reference of users node
         databaseUsers = FirebaseDatabase.getInstance().getReference("users");
@@ -64,6 +73,12 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override
