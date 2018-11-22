@@ -10,6 +10,8 @@ import android.widget.Toast;
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button buttonLogout;
+    private Button buttonPrivateChat;
+    private Button buttonGroupChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +19,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.profile);
 
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
+        buttonPrivateChat = (Button) findViewById(R.id.buttonPrivateChat);
+        buttonGroupChat = (Button) findViewById(R.id.buttonGroupChat);
         buttonLogout.setOnClickListener(this);
+        buttonPrivateChat.setOnClickListener(this);
+        buttonGroupChat.setOnClickListener(this);
     }
 
     @Override
@@ -29,6 +35,16 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             finish();
             //starting login activity
             startActivity(new Intent(this, LoginActivity.class));
+        }
+
+        if(view == buttonPrivateChat){
+            finish();
+            startActivity(new Intent(this, UserListActivity.class));
+        }
+
+        if(view == buttonGroupChat){
+            finish();
+            startActivity(new Intent(this, GroupChatActivity.class));
         }
     }
 }

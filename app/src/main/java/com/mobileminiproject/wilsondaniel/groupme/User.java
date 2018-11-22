@@ -2,19 +2,20 @@ package com.mobileminiproject.wilsondaniel.groupme;
 
 public class User {
 
-    private String userID, name, emailAddress, password;
-    private Integer contactNo;
-    private Boolean isStudent;
+    static String userID, name, emailAddress, password, chatWith;
+    static Integer contactNo;
+    static Boolean isStudent;
 
     public User() {}
 
-    public User(String userID, String name, Integer contactNo, String emailAddress, String password, Boolean isStudent) {
+    public User(String userID, String name, Integer contactNo, String emailAddress, String password, Boolean isStudent, String chatWith) {
         this.userID = userID;
         this.name = name;
         this.contactNo = contactNo;
         this.emailAddress = emailAddress;
         this.password = password;
         this.isStudent = isStudent;
+        this.chatWith = chatWith;
     }
 
     public String getUserID() {
@@ -38,4 +39,6 @@ public class User {
     public Boolean getIsStudent() {
         return isStudent;
     }
+
+    public String getChatWith() { return  chatWith; }
 }

@@ -9,6 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
+
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,10 +46,26 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(Constants.CHANNEL_ID, Constants.CHANNEL_NAME, importance);
+            mChannel.setDescription(Constants.CHANNEL_DESCRIPTION);
+            mChannel.enableLights(true);
+            mChannel.setLightColor(Color.RED);
+            mChannel.enableVibration(true);
+            mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            mNotificationManager.createNotificationChannel(mChannel);
+        }
+
+        MyNotificationManager.getInstance(this).displayNotification("Hi there!", "Welcome to GroupMe!");
+
         // test app id
-//        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+//        MobileAds.initialize(this, "ca-app-pub-3427245011593880~9041642776");
         // real app id
-        MobileAds.initialize(this, "ca-app-pub-3427245011593880~9041642776");
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
 
         //getting the reference of users node
         databaseUsers = FirebaseDatabase.getInstance().getReference("users");
@@ -113,29 +137,14 @@ public class LoginActivity extends AppCompatActivity {
         //getting the login input values
         String emailIn = editTextEmail.getText().toString().trim();
         String passwordIn = editTextPassword.getText().toString().trim();
-        Boolean isFound = false;
 
-        for (int x=0; x<userList.size(); x++) {
-            String email = userList.get(x).getEmailAddress();
-            String password = userList.get(x).getPassword();
-
-//            System.out.println(email);
-//            System.out.println(password);
-
-            if (emailIn.isEmpty()) {
-                Toast.makeText(this, "Please enter your email address!", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            if (passwordIn.isEmpty()) {
-                Toast.makeText(this, "Please enter your password!", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            if (emailIn.equals(email) && passwordIn.equals(password)) {
-                isFound = true;
-                break;
-            }
+        if (emailIn.equals("")) {
+            Toast.makeText(this, "Please enter your email address!", Toast.LENGTH_SHORT).show();
         }
-        if (isFound == true) {
+        else if (passwordIn.equals("")) {
+            Toast.makeText(this, "Please enter your password!", Toast.LENGTH_SHORT).show();
+        }
+        else {
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
             finish();
             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));

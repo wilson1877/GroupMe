@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mobileminiproject.wilsondaniel.groupme.User.chatWith;
+
 public class RegisterActivity extends AppCompatActivity {
 
     public static final String USER_ID = ".userID";
@@ -26,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static final String EMAIL_ADD = ".emailAddress";
     public static final String PASSWORD = ".password";
     public static final String IS_STUDENT = ".isStudent";
+    public static final String CHATWITH = ".chatWith";
 
     EditText editTextName, editTextContact, editTextEmail, editTextPassword;
     RadioGroup userType;
@@ -97,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String userID = databaseUser.push().getKey();
 
                 //creating an User Object
-                User users = new User(userID, name, contactNO, emailAddress, password, userType);
+                User users = new User(userID, name, contactNO, emailAddress, password, userType, chatWith);
 
                 //Saving the User
                 databaseUser.child(userID).setValue(users);
