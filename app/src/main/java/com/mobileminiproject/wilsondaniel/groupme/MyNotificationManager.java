@@ -28,7 +28,7 @@ public class MyNotificationManager {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(mCtx, Constants.CHANNEL_ID)
-                        .setSmallIcon(R.drawable.logo)
+                        .setSmallIcon(R.drawable.logo_noname)
                         .setContentTitle(title)
                         .setContentText(body);
 

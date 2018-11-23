@@ -11,7 +11,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private Button buttonLogout;
     private Button buttonPrivateChat;
-    private Button buttonGroupChat;
+    //private Button buttonGroupChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +20,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonPrivateChat = (Button) findViewById(R.id.buttonPrivateChat);
-        buttonGroupChat = (Button) findViewById(R.id.buttonGroupChat);
+        //buttonGroupChat = (Button) findViewById(R.id.buttonGroupChat);
         buttonLogout.setOnClickListener(this);
         buttonPrivateChat.setOnClickListener(this);
-        buttonGroupChat.setOnClickListener(this);
+        //buttonGroupChat.setOnClickListener(this);
     }
 
     @Override
@@ -42,9 +42,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(this, UserListActivity.class));
         }
 
-        if(view == buttonGroupChat){
-            finish();
-            startActivity(new Intent(this, GroupChatActivity.class));
-        }
+//        if(view == buttonGroupChat){
+//            finish();
+//            startActivity(new Intent(this, GroupChatActivity.class));
+//        }
     }
 }
