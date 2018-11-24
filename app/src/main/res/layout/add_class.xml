@@ -10,6 +10,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="LoginActivity">
 
+    <TextView
+        android:id="@+id/createClassHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="63dp"
+        android:gravity="center"
+        android:text="Creating New Class"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_centerVertical="true"
@@ -17,6 +29,47 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/inputClassName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="Class Name"
+            android:inputType="text"
+            android:selectAllOnFocus="false"
+            android:singleLine="false"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/inputClassDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="Class Description"
+            android:inputType="text"
+            android:selectAllOnFocus="false"
+            android:singleLine="false"
+            android:textAlignment="center" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="33dp"
+        android:text="Cancel" />
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/cancelButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="61dp"
+        android:text="Create" />
 
 </RelativeLayout>
