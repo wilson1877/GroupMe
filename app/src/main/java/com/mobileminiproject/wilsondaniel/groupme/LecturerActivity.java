@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class SideMenuActivity extends AppCompatActivity
+public class LecturerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -29,8 +29,8 @@ public class SideMenuActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent=new Intent(view.getContext(),AddClassActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -97,11 +97,14 @@ public class SideMenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Handle the camera action
+            finish();
+            startActivity(new Intent (this, UserListActivity.class));
         } else if (id == R.id.nav_class) {
-
+            finish();
+            startActivity(new Intent (this, UserListActivity.class));
         } else if (id == R.id.nav_events) {
-
+            finish();
+            startActivity(new Intent (this, UserListActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
