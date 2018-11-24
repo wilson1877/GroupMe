@@ -13,9 +13,6 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
-
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DataSnapshot;
@@ -147,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
         else {
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
             finish();
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            startActivity(new Intent(getApplicationContext(), SideMenuActivity.class));
         }
     }
 }
