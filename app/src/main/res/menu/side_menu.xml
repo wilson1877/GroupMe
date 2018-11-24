@@ -2,8 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/buttonPrivateChat"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Private Chat"
+        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/buttonGroupChat"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="Group Chat"-->
+        <!--app:showAsAction="never" />-->
+    <item
+        android:id="@+id/buttonLogout"
+        android:orderInCategory="100"
+        android:title="@string/logout"
         app:showAsAction="never" />
 </menu>

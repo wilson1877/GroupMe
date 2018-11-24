@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class SideMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,9 +69,23 @@ public class SideMenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.buttonLogout) {
+            Toast.makeText(this, "Logout successful!", Toast.LENGTH_SHORT).show();
+            //closing activity
+            finish();
+            //starting login activity
+            startActivity(new Intent(this, LoginActivity.class));
         }
+
+        if (id == R.id.buttonPrivateChat) {
+            finish();
+            startActivity(new Intent (this, UserListActivity.class));
+        }
+
+//        if (id == R.id.buttonGroupChat) {
+//            finish();
+//            startActivity(new Intent (this, GroupChatActivity.class));
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -81,11 +96,11 @@ public class SideMenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_profile) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_class) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_events) {
 
         }
 
