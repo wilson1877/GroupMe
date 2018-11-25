@@ -21,8 +21,8 @@ public class SideMenuActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_side_menu);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -33,11 +33,11 @@ public class SideMenuActivity extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -86,6 +86,26 @@ public class SideMenuActivity extends AppCompatActivity
 //            startActivity(new Intent (this, GroupChatActivity.class));
 //        }
 
+        if (id == R.id.buttonClass) {
+            finish();
+            startActivity(new Intent (this, SideMenuActivity.class));
+        }
+
+        if (id == R.id.buttonAnnouncement) {
+            finish();
+            startActivity(new Intent (this, AnnouncementHome.class));
+        }
+
+        if (id == R.id.buttonEvent) {
+            finish();
+            startActivity(new Intent (this, EventHome.class));
+        }
+
+        if (id == R.id.buttonFile) {
+            finish();
+            startActivity(new Intent (this, ViewUploadsActivity.class));
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -97,13 +117,13 @@ public class SideMenuActivity extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
             finish();
-            startActivity(new Intent (this, UserListActivity.class));
+            startActivity(new Intent (this, LecturerMainPageActivity.class));
         } else if (id == R.id.nav_class) {
             finish();
             startActivity(new Intent (this, LecturerMainPageActivity.class));
         } else if (id == R.id.nav_events) {
             finish();
-            startActivity(new Intent (this, UserListActivity.class));
+            startActivity(new Intent (this, EventHome.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

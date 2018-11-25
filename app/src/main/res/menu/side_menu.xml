@@ -2,6 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/buttonClass"
+        android:orderInCategory="100"
+        android:title="Classes"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/buttonAnnouncement"
+        android:orderInCategory="100"
+        android:title="Announcements"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/buttonEvent"
+        android:orderInCategory="100"
+        android:title="Events"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/buttonFile"
+        android:orderInCategory="100"
+        android:title="Files"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/buttonPrivateChat"
         android:orderInCategory="100"
         android:title="Private Chat"

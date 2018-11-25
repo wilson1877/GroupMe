@@ -35,7 +35,7 @@ public class MyNotificationManager {
 
         /*
          *  Clicking on the notification will take us to this intent
-         *  Right now we are using the MainActivity as this is the only activity we have in our application
+         *  Right now we are using the Login as this is the only activity we have in our application
          *  But for your project you can customize it as you want
          * */
 
