@@ -3,7 +3,6 @@ package com.mobileminiproject.wilsondaniel.groupme;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class LecturerActivity extends AppCompatActivity
+public class SideMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -101,7 +100,7 @@ public class LecturerActivity extends AppCompatActivity
             startActivity(new Intent (this, UserListActivity.class));
         } else if (id == R.id.nav_class) {
             finish();
-            startActivity(new Intent (this, UserListActivity.class));
+            startActivity(new Intent (this, LecturerMainPageActivity.class));
         } else if (id == R.id.nav_events) {
             finish();
             startActivity(new Intent (this, UserListActivity.class));

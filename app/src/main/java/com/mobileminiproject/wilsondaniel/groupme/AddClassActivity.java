@@ -19,7 +19,7 @@ public class AddClassActivity extends AppCompatActivity {
 
     EditText inputClassName, inputClassDescription;
     Button createButton, cancelButton;
-    List<User> classes;
+    List<Class> classes;
     DatabaseReference databaseClasses;
 
     @Override
@@ -50,7 +50,7 @@ public class AddClassActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(view == cancelButton){
                     finish();
-                    startActivity(new Intent(getApplicationContext(), LecturerActivity.class));
+                    startActivity(new Intent(getApplicationContext(), SideMenuActivity.class));
                 }
             }
         });
@@ -81,7 +81,7 @@ public class AddClassActivity extends AppCompatActivity {
             Toast.makeText(this, "Class created", Toast.LENGTH_LONG).show();
 
             finish();
-            startActivity(new Intent(getApplicationContext(), LecturerActivity.class));
+            startActivity(new Intent(getApplicationContext(), LecturerMainPageActivity.class));
 
         } else {
             //if the value is not given displaying a toast
