@@ -53,10 +53,10 @@ public class ViewUploadsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //getting the upload
                 Upload upload = uploadList.get(i);
-                String url = upload.getUrl();
-                //String url = "https://firebasestorage.googleapis.com/v0/b/groupme-cb64b.appspot.com/o/uploads%2F1543159171670.pdf?alt=media&token=3f52d62a-0256-4a56-bded-14a68ee2903c";
+                //String url = upload.getUrl();
+                String url = "https://firebasestorage.googleapis.com/v0/b/groupme-cb64b.appspot.com/o/uploads%2F1543199026813.pdf?alt=media&token=e08516cb-ac33-4bf9-9f01-38d2a098f23b";
 
-                Toast.makeText(ViewUploadsActivity.this, url, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ViewUploadsActivity.this, url, Toast.LENGTH_SHORT).show();
                 openWebPage(url);
 //                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
 //                intent.setDataAndType(Uri.parse(url), "application/pdf");

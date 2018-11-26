@@ -16,8 +16,19 @@
         <!--android:id="@+id/toolbar"-->
         <!--layout="@layout/toolbar" />-->
 
+    <TextView
+        android:id="@+id/announcementLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Announcements"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="20dp"/>
+
     <ListView
         android:id="@+id/listViewAnnouncements"
+        android:layout_below="@+id/announcementLabel"
         android:layout_width="match_parent"
         android:layout_height="396dp"></ListView>
 

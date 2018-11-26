@@ -6,13 +6,23 @@
     android:padding="16dp"
     tools:context=".UploadActivity">
 
+    <TextView
+        android:id="@+id/uploadLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload a PDF file"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="20dp"/>
+
     <EditText
         android:id="@+id/editTextFileName"
+        android:layout_below="@+id/uploadLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:hint="Enter a name for your file"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:hint="Enter a name for your file" />
 
     <Button
         android:id="@+id/buttonUploadFile"

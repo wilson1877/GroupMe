@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ViewUploadsActivity">
 
+    <TextView
+        android:id="@+id/filesLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Files"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="20dp"/>
+
     <ListView
         android:id="@+id/listView"
+        android:layout_below="@+id/filesLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

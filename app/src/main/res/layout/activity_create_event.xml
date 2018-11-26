@@ -119,18 +119,31 @@
             android:layout_margin="3dp"
             android:inputType="text"
             android:textSize="13dp"
+            android:hint="Select date..."
             android:gravity="left" />
+
+        <TextView
+            android:id="@+id/timeLabel"
+            android:layout_below="@+id/editTextDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="20dp"
+            android:text="Time"
+            android:textSize="15dp"
+            android:layout_gravity="left"/>
 
         <EditText
             android:id="@+id/editTextTime"
-            android:layout_below="@+id/editTextDate"
+            android:layout_below="@id/timeLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="Select Time..."
-            android:padding="15dp"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_margin="3dp"
+            android:inputType="text"
+            android:textSize="13dp"
+            android:hint="Select time..."
+            android:gravity="left" />
 
         <Button
             android:id="@+id/postBtn"

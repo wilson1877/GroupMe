@@ -9,29 +9,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Update event title here"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textSize="15dp" />
     <EditText
         android:id="@+id/editTextDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Update event description here"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textSize="15dp"/>
     <EditText
         android:id="@+id/editTextVenue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Update event venue here"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textSize="15dp"/>
     <EditText
         android:id="@+id/editTextDate"
         android:layout_below="@id/dateLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
         android:hint="Click to enter date"
         android:inputType="text"
-        android:textSize="13dp"
-        android:gravity="left"
+        android:textSize="15dp"
         android:textAlignment="center"/>
     <EditText
         android:id="@+id/editTextTime"
@@ -40,14 +41,14 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:hint="Click to enter time"
-        android:padding="15dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="15dp"
         android:textAlignment="center"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
         <Button
             android:id="@+id/updateBtn"
             android:layout_width="wrap_content"
